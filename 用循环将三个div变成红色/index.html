@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+    <style>
+      div {
+        background-color: black; 
+        width: 150px;
+        height: 150px;
+        float: left;
+        margin: 10px;
+      }
+  
+  </style>
+</head>
+<body>    
+    <div></div>
+    <div></div>
+    <div></div>
+    <input type="button" value="变色" id="changeColor">
+  <script>
+  var div = document.getElementsByTagName("div");
+    var btn = document.getElementById("changeColor");
+    btn.onclick = (function(){
+        for (var i = 0; i < div.length - 1; i++) {
+      div[i].style.backgroundColor = "red";
+          alert(i);
+    }
+    })
+  
+  </script>
+</body>
+</html>

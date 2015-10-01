@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js"></script>
+  <style>
+    #msg {
+      display: none;
+      width: 150px;
+      background-color: yellow;
+      border: 1px solid red;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <label for=""><input type="checkbox">两周内自动登陆</label>
+  <span id="msg">为了您的信息安全，请不要在网吧或公共电脑上使用此功能</span>
+  <script>
+    window.onload = function () {
+          var input = document.getElementsByTagName("label");
+    var msg = document.getElementById("msg");
+    input[0].onmouseover = function () {
+      msg.style.display = "block";
+    }
+    input[0].onmouseout = function () {
+      msg.style.display = "none";
+    }
+
+    }
+  </script>
+</body>
+
+</html>
