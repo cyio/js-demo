@@ -47,6 +47,14 @@ var
             } else {
                 event.cancelBubble = true;
             }
+        },
+        
+        getCharCode:function(event){   //以跨浏览器取得相同的字符编码，需在keypress事件中使用
+           if(typeof event.charCode=="number"){
+              return event.charCode;
+           }else{
+              return event.keyCode;
+           }
         }
 
     };
@@ -77,8 +85,19 @@ var
     var input = document.getElementsByTagName("input")[0];
     EventUtil.addHandler(form, "submit", function(event){
       event = EventUtil.getEvent(event);
-      EventUtil.preventDefault(event);
+      var target = EventUtil.getTarget(event);
+      // EventUtil.preventDefault(event);
       console.log('submit');
+      // 检查有效性
+      (function(){
+          // console.log(input);
+          if(target.checkValidity()) {
+              alert('pass');
+          } else {
+              alert('bad');
+          }
+      })();
+
     });
     // 不会触发submit事件，必须用提交按钮
     // submit()方法提交前，必须验证表单
@@ -123,6 +142,66 @@ var
         }
     });
 
+    // 过滤输入
+    EventUtil.addHandler(input, "keypress", function(event){
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getTarget(event);
+        // 获取按键编码
+        var charCode = EventUtil.getCharCode(event);
+        // console.log(String.fromCharCode(charCode));
+        
+        // 过滤数字，及一些常用键(<10)，及Ctrl
+        if(!/\d/.test(String.fromCharCode(charCode)) && charCode > 9 && !event.ctrlKey){
+            EventUtil.preventDefault(event);
+        };
+    }); 
     
+    // 自动切换焦点
+    (function(){
+        
+        function tabForward(event) {
+          event = EventUtil.getEvent(event);
+          var target = EventUtil.getTarget(event);
+          // 条件：输入框内容达到最大限制时
+          if(target.value.length == target.maxLength) {
+            var form = document.getElementById('myFormB');
+            for (var i=0, len = form.elements.length; i<len; i++) {
+                // 条件：遍历到当前输入框时
+                if (form.elements[i] == target) {
+                    // 条件：存在下一个输入框
+                    if(form.elements[i+1]) {
+                        // 执行：将焦点切换到下一个输入框
+                        form.elements[i+1].focus();
+                        console.log(i+1);
+                    }
+                    console.log('autoswitch return')
+                    // 返回
+                    return;
+                }
+            }
+          }
+        };
+        
+        var textbox1 = document.getElementById('txtTel1');
+        var textbox2 = document.getElementById('txtTel2');
+        var textbox3 = document.getElementById('txtTel3');
+        
+        EventUtil.addHandler(textbox1, "keyup", tabForward);
+        EventUtil.addHandler(textbox2, "keyup", tabForward);
+        EventUtil.addHandler(textbox3, "keyup", tabForward);
+    })();
+    
+    // 特性检测，是否支持email
+    (function(){
+        
+        var input = document.createElement('input');
+        input.type = "email";
+        
+        var isEmailSupported = (input.type == "email");
+        console.log(isEmailSupported);
+        
+    })();
+    
+
 
 })(window, window.document);
