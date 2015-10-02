@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!--   
+  button和input通用
+  提交按钮可以用图片，type="image"
+  重置按钮，type="reset"
+  submit事件，reset事件，对应相应的方法，通过JS可以阻止事件发生
+  表单有elements属性,表单元素列表，有数组的通用方法。
+  一些属性:
+            disabled
+            form
+            name
+            readOnly
+            tabIndex
+            type
+            value
+  为避免重复提交，可在提交一次后，禁用提交按钮 btn.disable = true
+  注意由于浏览器对click事件和submit事件发生先后处理不同，这里不要用onclick。
+  自动获取焦点：<input type="text" autofocus>
+  focus事件，blur事件，change事件
+-->
+<form action="" id="myForm">
+  <input type="text" size="25" maxlength="30">
+  <input type="submit">
+</form>
+<script src="EventUtil.js"></script>
+</body>
+</html>
