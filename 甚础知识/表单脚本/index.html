@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
+
 <body>
-<!--   
+    <!--   
   button和input通用
   提交按钮可以用图片，type="image"
   重置按钮，type="reset"
@@ -28,19 +30,28 @@
   如果没有required，那么空文本框也会验证通过
   检测有效性的方法：checkValidity() 和 validity
 -->
-<h3>获取焦点，交互</h3>
-<form action="" id="myForm">
-  <input type="text" pattern="\d+" size="25" maxlength="30">
-  <input type="submit">
-</form>
-<h3>自动切换焦点</h3>
-<form action="" id="myFormB">
-  <input type="text" name="tel1" id="txtTel1" maxlength="3">
-  <input type="text" name="tel2" id="txtTel2" maxlength="3">
-  <input type="text" name="tel3" id="txtTel3" maxlength="4">
-</form>
-<h3>设定数字范围，步进 step()方法</h3>
-<input type="number" min="0" max="100" step="5" name="count">
-<script src="EventUtil.js"></script>
+    <h3>获取焦点，交互</h3>
+    <form action="" id="myForm">
+        <input type="text" pattern="\d+" size="25" maxlength="30">
+        <input type="submit">
+    </form>
+    <h3>自动切换焦点</h3>
+    <form action="" id="myFormB">
+        <input type="text" name="tel1" id="txtTel1" maxlength="3">
+        <input type="text" name="tel2" id="txtTel2" maxlength="3">
+        <input type="text" name="tel3" id="txtTel3" maxlength="4">
+    </form>
+    <h3>设定数字范围，步进 step()方法</h3>
+    <input type="number" min="0" max="100" step="5" name="count">
+    <h3>选项表单</h3>
+    <select name="location" id="selLocation">
+      <option value="美国">美国人</option>
+      <option value="中国">中国人</option>
+      <option value="英国">英国人</option>
+      <option value="法国">法国人</option>
+      <option>德国</option>
+    </select>
+    <script src="EventUtil.js"></script>
 </body>
+
 </html>

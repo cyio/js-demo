@@ -202,6 +202,55 @@ var
         
     })();
     
+    // 选项表单
+    (function(){
+        
+        var selectbox = document.getElementById("selLocation");
+        // 获取选项值
+        var text = selectbox.options[0].text;
+        var value = selectbox.options[0].value;
+        console.log(text + ' ' + value);
+        
+        // 选择选项
+        EventUtil.addHandler(selectbox, "change", function(event){
+            // 只有一项时
+            var selectedOption = selectbox.options[selectbox.selectedIndex];
+            console.log("你选择了" + selectedOption.text);
+            // alert("Selected index: " + selectbox.selectedIndex + "\nSelected text: " + selectedOption.text + "\nSelected value " + selectedOption.value);
+            
+            // 遍历检查selected是否为真，获取选中项
+            var result = [];        
+            for(var i=0; i<selectbox.options.length; i++) {
+                var option = selectbox.options[i]
+                if(option.selected) {
+                    result.push(option)                            ;
+                }
+            }
+            console.log(result);
+            // return result;
+            
+            // 添加选项
+            var newOption = document.createElement("option");
+            newOption.appendChild(document.createTextNode("俄国人"));
+            newOption.setAttribute("value", "俄国");
+            selectbox.appendChild(newOption);
+            console.log('俄国人也来了');
+            
+            // selectbox.removeChild(selectbox.options[0]);
+            selectbox.remove(0);
+            console.log('把美国人赶走了');
+            
+            // 移动选项，如把第3项向前移动两项
+            var optionToMove = selectbox.options[3];
+            var stepToMove = optionToMove.index-2;
+            console.log("要移动的是：" + optionToMove.text);
+            selectbox.insertBefore(optionToMove, selectbox.options[stepToMove]);
+            console.log("检查第一项：" + selectbox.options[stepToMove].text);
+        })
+        
+        
+    })();
+    
 
 
 })(window, window.document);
