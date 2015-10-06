@@ -30,7 +30,15 @@
   UI事件多数与Windows对象和表单控件有关。
   如果在页面加载前操作document.body会导致错误。
   contextmenu事件，就是上下文菜单，通常是右键打开，也可以用键盘。
-
+  事件名总是小写
+  wheelDelta是正负120的倍数
+  keydown和keypress的异同：
+    1. 按不不放，都会重复触发
+    2. down是任意键，press是字符键（联想：出版、打字）
+    3. 按字符键时，keydown会先发生，接着发生keypress
+    4. 按非字符键时，keydown然后keyup
+  textInput事件触发条件有二，一是在可编辑区域，二是输入实际字符。有别于keypress，如退格键，只会发生keypress事件
+  复合事件指输入法事件（IME）
 -->
 <input type="button" id="myBtn" value="button"/>
 <a href="http://baidu.com">Baidu</a>

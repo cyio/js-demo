@@ -159,11 +159,18 @@
             })
         })
 
+        // beforeunload
         EventUtil.addHandler(window, "beforeunload", function (event) {
             event = EventUtil.getEvent(event);
             var message ="Leave?";
             event.returnValue = message;
             return message;
+        })
+
+        // mousewheel
+        EventUtil.addHandler(document, "mousewheel", function (event) {
+            event = EventUtil.getEvent(event);
+            alert(event.wheelDelta);
         })
     })()
 
